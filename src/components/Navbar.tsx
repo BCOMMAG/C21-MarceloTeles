@@ -88,8 +88,8 @@ export function Navbar() {
 
   return (
     <>
-      {/* 1. LOGO MOBILE FIXA SEPARADA - DESCONECTADA DO MENU (ESPAÇAMENTO DO TOPO REDUZIDO PELA METADE) */}
-      <div className="lg:hidden fixed top-1 sm:top-1.5 left-2.5 sm:left-3.5 z-[45] pointer-events-none">
+      {/* 1. LOGO MOBILE FIXA SEPARADA - DESCONECTADA DO MENU */}
+      <div className="lg:hidden fixed top-[2px] sm:top-[3px] left-2.5 sm:left-3.5 z-[45] pointer-events-none">
         <Link
           href="/"
           onClick={handleLogoClick}
@@ -123,9 +123,9 @@ export function Navbar() {
             {/* Espaçador Mobile para proteger a área da logo sem afetar a altura dos botões */}
             <div className="lg:hidden w-28 sm:w-30 max-w-[30vw] h-6 flex-shrink-0 pointer-events-none" />
 
-            {/* Logo Desktop: Totalmente Desacoplada, espaçamento superior reduzido exatamente pela metade */}
+            {/* Logo Desktop: Totalmente Desacoplada, ajustada suavemente para cima */}
             <div className="hidden lg:flex items-center justify-start relative flex-shrink-0 w-46 xl:w-54 h-10 pointer-events-none">
-              <div className="absolute left-0 top-1/2 -translate-y-[41%] pointer-events-auto">
+              <div className="absolute left-0 top-1/2 -translate-y-[46%] pointer-events-auto">
                 <Link
                   href="/"
                   onClick={handleLogoClick}
