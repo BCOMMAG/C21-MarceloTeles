@@ -88,8 +88,8 @@ export function Navbar() {
 
   return (
     <>
-      {/* 1. LOGO MOBILE FIXA SEPARADA - DESCONECTADA DO MENU E ELEVADA (CLIQUE RETORNA AO TOPO DA PÁGINA INICIAL) */}
-      <div className="lg:hidden fixed -top-3 sm:-top-3.5 left-2 sm:left-3 z-[45] pointer-events-none">
+      {/* 1. LOGO MOBILE FIXA SEPARADA - DESCONECTADA DO MENU (DESLOCADA PARA BAIXO COM RESPIRO DO TOPO) */}
+      <div className="lg:hidden fixed top-2.5 sm:top-3 left-2.5 sm:left-3.5 z-[45] pointer-events-none">
         <Link
           href="/"
           onClick={handleLogoClick}
@@ -121,25 +121,25 @@ export function Navbar() {
           <div className="relative min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-between gap-2 sm:gap-4">
             
             {/* Espaçador Mobile para proteger a área da logo sem afetar a altura dos botões */}
-            <div className="lg:hidden w-28 sm:w-30 max-w-[30vw] h-5 flex-shrink-0 pointer-events-none" />
+            <div className="lg:hidden w-28 sm:w-30 max-w-[30vw] h-6 flex-shrink-0 pointer-events-none" />
 
-            {/* Logo Desktop: Totalmente Desacoplada da altura da barra do menu (reduzida em 15%, clique retorna ao topo) */}
-            <div className="hidden lg:flex items-center justify-start relative flex-shrink-0 w-52 xl:w-60 h-10 pointer-events-none">
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-auto">
+            {/* Logo Desktop: Totalmente Desacoplada, reduzida em 10% adicional e deslocada levemente para baixo */}
+            <div className="hidden lg:flex items-center justify-start relative flex-shrink-0 w-46 xl:w-54 h-10 pointer-events-none">
+              <div className="absolute left-0 top-1/2 -translate-y-[32%] pointer-events-auto">
                 <Link
                   href="/"
                   onClick={handleLogoClick}
                   className="flex items-center group focus:outline-none"
                   aria-label="Ir para a página inicial"
                 >
-                  <div className="relative h-18 xl:h-22 w-52 xl:w-60 transition-transform duration-300 group-hover:scale-105">
+                  <div className="relative h-16 xl:h-20 w-46 xl:w-54 transition-transform duration-300 group-hover:scale-105">
                     <Image
                       src={currentLogo}
                       alt={OFFICE_INFO.name}
                       fill
                       priority
                       className="object-contain object-left drop-shadow-sm"
-                      sizes="(min-width: 1280px) 300px, 260px"
+                      sizes="(min-width: 1280px) 270px, 230px"
                     />
                   </div>
                 </Link>

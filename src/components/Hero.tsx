@@ -120,7 +120,7 @@ export function Hero() {
           {/* Headline Principal */}
           <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] xl:text-[3.25rem] leading-[1.16] sm:leading-[1.14] tracking-tight text-white font-bold drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]">
             Defesa estratégica,{" "}
-            <span className="text-[#D4AF37] relative font-extrabold underline decoration-[#85714D]/60 underline-offset-4">
+            <span className="text-[#D4AF37] relative font-extrabold">
               técnica e resolutiva
             </span>{" "}
             dos seus direitos civis, trabalhistas, previdenciários e do consumidor.
