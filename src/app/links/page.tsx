@@ -283,15 +283,15 @@ export default function LinksPage() {
       </div>
 
       {/* ===================== VERSÃO MOBILE (100% Fit Sem Scroll + Logo Dobrada Centralizada) ===================== */}
-      <div className="lg:hidden relative flex flex-col justify-between h-[100dvh] max-h-[100dvh] w-full px-4 py-2.5 sm:py-3 overflow-hidden bg-gradient-to-b from-[#FDFBF5] via-[#FAF7F0] to-[#F5F2EB]">
+      <div className="lg:hidden relative flex flex-col justify-between h-[100dvh] max-h-[100dvh] w-full px-4 py-3 overflow-hidden bg-gradient-to-b from-[#FDFBF5] via-[#FAF7F0] to-[#F5F2EB]">
         {/* Linhas Geométricas Sutis de Fundo */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <defs>
               <linearGradient id="goldGeomGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#85714D" stopOpacity="0.25" />
-                <stop offset="50%" stopColor="#D4AF37" stopOpacity="0.15" />
-                <stop offset="100%" stopColor="#85714D" stopOpacity="0.08" />
+                <stop offset="0%" stopColor="#85714D" stopOpacity="0.22" />
+                <stop offset="50%" stopColor="#D4AF37" stopOpacity="0.14" />
+                <stop offset="100%" stopColor="#85714D" stopOpacity="0.06" />
               </linearGradient>
             </defs>
 
@@ -303,41 +303,30 @@ export default function LinksPage() {
           </svg>
         </div>
 
-        {/* Topo Mobile - Logo Dobrada Centralizada (Clique volta para a Home) */}
-        <div className="relative z-10 w-full flex flex-col items-center justify-center text-center pt-1 pb-1">
+        {/* Topo Mobile - Logo Dobrada e Centralizada (Clique volta para a Home) */}
+        <div className="relative z-10 w-full flex flex-col items-center justify-center text-center pt-2 pb-1">
           <Link
             href="/"
-            className="w-[88vw] max-w-[320px] block mx-auto cursor-pointer group focus:outline-none mb-1"
+            className="w-full max-w-[340px] sm:max-w-[400px] flex items-center justify-center mx-auto cursor-pointer group focus:outline-none"
             aria-label="Ir para a página inicial"
           >
-            <div className="relative w-full h-20 sm:h-24 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            {/* Altura dobrada e perfeitamente centralizada */}
+            <div className="relative w-full h-36 sm:h-44 transition-transform duration-300 group-hover:scale-105 flex items-center justify-center">
               <Image
                 src="/logo_sem_fundo_usarnomodoclaro.png"
                 alt={OFFICE_INFO.name}
                 fill
                 priority
-                className="object-contain object-center drop-shadow-xs"
-                sizes="(max-width: 768px) 320px, 280px"
+                className="object-contain object-center drop-shadow-sm"
+                sizes="(max-width: 768px) 380px, 320px"
               />
             </div>
           </Link>
-
-          {/* Áreas de Atuação em uma Linha Pequena Compacta */}
-          <div className="flex flex-wrap items-center justify-center gap-1 max-w-sm mx-auto px-1">
-            {specialties.map((spec, i) => (
-              <span
-                key={i}
-                className="text-[0.625rem] px-2 py-0.5 rounded-full bg-white text-[#1E2229] font-body border border-[#85714D]/25 font-semibold shadow-2xs"
-              >
-                {spec}
-              </span>
-            ))}
-          </div>
         </div>
 
-        {/* Links Mobile - Distribuídos harmoniosamente ocupando o espaço */}
-        <div className="relative z-10 w-full flex-1 flex flex-col justify-between py-1.5 max-w-md mx-auto">
-          {quickLinks.slice(0, 7).map((item) => {
+        {/* Links Mobile - Espaçamento compacto e elegante, sem vãos excessivos */}
+        <div className="relative z-10 w-full flex flex-col gap-2 sm:gap-2.5 max-w-md mx-auto my-auto px-0.5">
+          {quickLinks.slice(0, 6).map((item) => {
             const Icon = item.icon;
             return (
               <a
@@ -345,10 +334,10 @@ export default function LinksPage() {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`group flex items-center justify-between px-3 py-2 rounded-xl border transition-all duration-200 active:scale-[0.98] ${
+                className={`group flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-all duration-200 active:scale-[0.98] ${
                   item.highlight
                     ? "bg-[#25D366] text-white border-transparent shadow-[0_3px_12px_rgba(37,211,102,0.3)]"
-                    : "bg-white/95 backdrop-blur-xs hover:bg-white border-[#85714D]/25 text-[#1E2229] shadow-2xs"
+                    : "bg-white/95 backdrop-blur-xs hover:bg-white border-[#85714D]/25 text-[#1E2229] shadow-2xs hover:border-[#D4AF37]"
                 }`}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
@@ -360,9 +349,9 @@ export default function LinksPage() {
                     <Icon className="w-3.5 h-3.5" />
                   </div>
                   <div className="min-w-0">
-                    <h2 className="font-heading font-bold text-xs leading-tight truncate">{item.title}</h2>
+                    <h2 className="font-heading font-bold text-xs sm:text-sm leading-tight truncate">{item.title}</h2>
                     <p
-                      className={`text-[0.625rem] font-body truncate ${
+                      className={`text-[0.6875rem] font-body truncate ${
                         item.highlight ? "text-white/90" : "text-gray-500"
                       }`}
                     >
@@ -374,10 +363,34 @@ export default function LinksPage() {
               </a>
             );
           })}
+
+          {/* Linha com Redes Sociais no Mobile */}
+          <div className="grid grid-cols-2 gap-2 pt-0.5">
+            <a
+              href={OFFICE_INFO.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-white/95 border border-[#85714D]/25 text-[#1E2229] hover:border-[#D4AF37] transition-all text-xs font-heading font-semibold shadow-2xs"
+            >
+              <InstagramIcon className="w-3.5 h-3.5 text-[#85714D]" />
+              <span>Instagram</span>
+              <ArrowUpRight className="w-3 h-3 text-[#85714D]" />
+            </a>
+            <a
+              href={OFFICE_INFO.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-white/95 border border-[#85714D]/25 text-[#1E2229] hover:border-[#D4AF37] transition-all text-xs font-heading font-semibold shadow-2xs"
+            >
+              <FacebookIcon className="w-3.5 h-3.5 text-[#85714D]" />
+              <span>Facebook</span>
+              <ArrowUpRight className="w-3 h-3 text-[#85714D]" />
+            </a>
+          </div>
         </div>
 
         {/* Rodapé Mobile Compacto */}
-        <div className="relative z-10 text-center text-[0.625rem] text-gray-500 font-body pt-1 pb-0.5">
+        <div className="relative z-10 text-center text-[0.625rem] sm:text-[0.6875rem] text-gray-500 font-body pt-1 pb-1">
           <p>{OFFICE_INFO.addressShort} • © {new Date().getFullYear()} {OFFICE_INFO.name}</p>
         </div>
       </div>
